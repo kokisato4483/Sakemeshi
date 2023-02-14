@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    get 'recipes/index'
+    get 'recipes/destroy'
+    get 'recipes/show'
+    get 'recipes/edit'
+    get 'recipes/update'
+  end
+  
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
