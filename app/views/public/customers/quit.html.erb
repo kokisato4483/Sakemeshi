@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-3">
+      <h2><strong>本当に退会しますか？</strong></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center mt-6">
+      退会すると、会員登録情報や<br>
+      レシピ投稿ができなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。<br>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col text-center mt-4">
+      <%= link_to public_customers_path, class: 'nav-link' do %>
+        <button type="button" class="btn btn-primary">退会しない</button>
+      <% end %>
+    </div>
+    <div class="col text-center mt-4">
+      <%= link_to "退会する", public_customers_out_path, method: :patch, class: "btn btn-danger" %>
+    </div>
+  </div>

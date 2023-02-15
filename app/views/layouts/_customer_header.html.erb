@@ -1,0 +1,42 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#808080;">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <p id="notice"><%= notice %></p>
+        <ul class="navbar-nav ml-auto">
+          
+    <% if customer_signed_in? %>
+
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-dark btn-sm">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+        </button>
+      </li>
+      
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-dark btn-sm">
+          <%= link_to "マイページ", public_customers_path,class: "nav-link" %>
+        </button>
+      </li>
+      
+
+    <% else %>
+    
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-dark btn-sm">
+          <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
+        </button>
+      </li>
+      
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-dark btn-sm">
+          <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
+        </button>
+      </li>
+      
+      </ul>
+      <% end %>
+      </div>
+    </div>
+  </nav>
+</header>
