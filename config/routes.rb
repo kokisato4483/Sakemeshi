@@ -13,7 +13,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
   namespace :admin do
     resources :genres,only: [:index,:create,:edit,:update,:destroy]
-    resources :customers,only: [:index,:show,:edit,:updat]
+    resources :customers,only: [:index,:show,:edit,:update]
   end
   
   namespace :admin do
