@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_14_070541) do
+ActiveRecord::Schema.define(version: 2023_02_16_042949) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 2023_02_14_070541) do
 
   create_table "genres", force: :cascade do |t|
     t.string "category", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.string "tips", null: false
+    t.string "point", null: false
+    t.boolean "is_status", null: false
+    t.string "drink", default: "t", null: false
+    t.string "drink_point", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
