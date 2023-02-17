@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
+  
+  has_one_attached :image
   belongs_to :customer
   belongs_to :genre
-  has_many :post_images, dependent: :destroy
   
 end

@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'ingredients/index'
+    get 'ingredients/edit'
+    get 'ingredients/create'
+    get 'ingredients/update'
+    get 'ingredients/destroy'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -16,7 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :genres,only: [:index,:create,:edit,:update,:destroy]
     resources :customers,only: [:index,:show,:edit,:update]
   end
-  
+
   namespace :admin do
     get 'recipes/index'
     get 'recipes/destroy'
@@ -24,7 +31,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'recipes/edit'
     get 'recipes/update'
   end
-  
+
   namespace :public do
     get 'customers/infomation/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'
@@ -32,8 +39,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/quit' => 'customers#quit'
     patch 'customers/out' => 'customers#out'
     resources :recipes,only: [:index,:show,:create,:edit,:update,:destroy,:new]
-  end
-  
+    resources :ingredients,only: [:create,:update,:destroy]
+  end 
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "homes#top"
   get "/home/about" => "homes#about", as: "about"

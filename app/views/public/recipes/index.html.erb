@@ -1,2 +1,26 @@
-<h1>Public::Recipes#index</h1>
-<p>Find me in app/views/public/recipes/index.html.erb</p>
+<div class="container">
+
+  <div class="row mt-4">
+    <mark class="h4 table-secondary">レシピ一覧</mark>
+  </div>
+
+<%# ジャンル一覧編集機能　%>
+  <div class="row">
+    <table class="table table-light table-bordered">
+      <thead class="thead-light"></thead>
+        <tr>
+          <th>レシピ名</th>
+          <th>投稿者</th>
+          <th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recipes.each do |recipes| %>
+          <tr>
+            <th><%= recipes.name %></th>
+            <th><%= recipes.category %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
