@@ -2,7 +2,8 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
+    @recipes = @customer.recipes
   end
 
   def edit
@@ -12,7 +13,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-       redirect_to public_customers_path
+       redirect_to public_customer_path(current_customer)
     else
        render :edit and return
     end
@@ -28,11 +29,14 @@ class Public::CustomersController < ApplicationController
 
   def quit
   end
-  
+
+
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:is_deleted, :name, :email)
   end
-  
+
+
 end

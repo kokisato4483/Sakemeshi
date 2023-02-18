@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'ingredients/index'
-    get 'ingredients/edit'
-    get 'ingredients/create'
-    get 'ingredients/update'
-    get 'ingredients/destroy'
-  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -35,7 +28,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :public do
     get 'customers/infomation/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'
-    get 'customers' => 'customers#show'
+    resources :customers,only:[:show]
     get 'customers/quit' => 'customers#quit'
     patch 'customers/out' => 'customers#out'
     resources :recipes,only: [:index,:show,:create,:edit,:update,:destroy,:new]
