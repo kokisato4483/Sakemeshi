@@ -21,9 +21,14 @@
       <thead class="thead-light"></thead>
         <tr>
           <th></th>
-          <th>投稿者</th>
+          <th>
+            <% if customer_signed_in? %>
+              投稿者
+            <% end %>
+          </th>
           <th>レシピ名</th>
           <th>ジャンル</th>
+          <th>コメント</th>
           <th></th>
         </tr>
       </thead>
@@ -31,12 +36,15 @@
         <% @recipes.each do |recipe| %>
           <tr>
             <th><%= image_tag recipe.get_image, size: "100x100" %></th>
-            <th><%= link_to public_customer_path(recipe.customer.id) do %>
-                  <%= recipe.customer.name %>
+            <th><% if customer_signed_in? %>
+                  <%= link_to public_customer_path(recipe.customer.id) do %>
+                    <%= recipe.customer.name %>
+                  <% end %>
                 <% end %>
             </th>
             <th><%= recipe.name %></th>
             <th><%= recipe.genre.category %></th>
+            <th><%= link_to "#{recipe.recipe_comments.count} コメント", public_recipe_path(recipe.id) %></th>
             <th>
               <button type="button" class="btn btn-outline-dark btn-sm">
                 <%= link_to "詳細", public_recipe_path(recipe.id), class: "nav-link" %>

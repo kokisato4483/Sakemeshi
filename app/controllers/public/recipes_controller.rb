@@ -1,14 +1,13 @@
 class Public::RecipesController < ApplicationController
-  before_action :authenticate_customer!
   before_action :correct_post,only: [:edit,:update,:destroy]
 
   def index
     @genres = Genre.all
     if params[:genre_id]
       @genre = @genres.find(params[:genre_id])
-      @recipes = @genre.recipes
+      @recipes = @genre.recipes.order(created_at: :DESC)
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.all.order(created_at: :DESC)
     end
 
   end
@@ -26,6 +25,7 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @recipe_comment = RecipeComment.new
   end
 
   def edit

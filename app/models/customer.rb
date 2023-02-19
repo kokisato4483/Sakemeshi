@@ -5,5 +5,5 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :recipes, dependent: :destroy
-  
+  has_many :recipe_comments, dependent: :destroy
 end

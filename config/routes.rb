@@ -15,14 +15,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
     resources :genres,only: [:index,:create,:edit,:update,:destroy]
     resources :customers,only: [:index,:show,:edit,:update]
-  end
-
-  namespace :admin do
-    get 'recipes/index'
-    get 'recipes/destroy'
-    get 'recipes/show'
-    get 'recipes/edit'
-    get 'recipes/update'
+    resources :recipes,only: [:index,:show,:destroy]
   end
 
   namespace :public do
@@ -31,7 +24,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :customers,only:[:show]
     get 'customers/quit' => 'customers#quit'
     patch 'customers/out' => 'customers#out'
-    resources :recipes,only: [:index,:show,:create,:edit,:update,:destroy,:new]
+    
+    resources :recipes,only: [:index,:show,:create,:edit,:update,:destroy,:new] do
+      resources :recipe_comments,only: [:create,:update,:destroy]
+    end
+    
     resources :ingredients,only: [:create,:update,:destroy]
   end 
 
