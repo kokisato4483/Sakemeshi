@@ -38,7 +38,7 @@
             </th>
             <th><%= recipe.name %></th>
             <th><%= recipe.genre.category %></th>
-            <th><%= link_to "#{recipe.recipe_comments.count} コメント", admin_recipe_path(recipe.id) %><</th>
+            <th><%= link_to "#{recipe.recipe_comments.count} コメント", admin_recipe_path(recipe.id) %></th>
             <th>
                <button type="button" class="btn btn-outline-dark btn-sm">
                 <%= link_to "詳細", admin_recipe_path(recipe.id), class: "nav-link" %>

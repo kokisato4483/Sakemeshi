@@ -43,6 +43,7 @@
             <th>投稿者</th>
             <th>レシピ名</th>
             <th>ジャンル</th>
+            <th>コメント数</th>
             <th></th>
           </tr>
         </thead>
@@ -50,12 +51,10 @@
           <% @recipes.each do |recipe| %>
             <tr>
               <th><%= image_tag recipe.get_image, size: "100x100" %></th>
-              <th><%= link_to public_customer_path(recipe.customer.id) do %>
-                  <%= recipe.customer.name %>
-                <% end %>
-              </th>
+              <th><%= recipe.customer.name %></th>
               <th><%= recipe.name %></th>
               <th><%= recipe.genre.category %></th>
+              <th><%= link_to "#{recipe.recipe_comments.count} コメント", admin_recipe_path(recipe.id) %></th>
               <th>
                 <button type="button" class="btn btn-outline-dark btn-sm">
                   <%= link_to "詳細", admin_recipe_path(recipe.id), class: "nav-link" %>

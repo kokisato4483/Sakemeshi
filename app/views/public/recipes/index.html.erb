@@ -36,11 +36,10 @@
         <% @recipes.each do |recipe| %>
           <tr>
             <th><%= image_tag recipe.get_image, size: "100x100" %></th>
-            <th><% if customer_signed_in? %>
+            <th>
                   <%= link_to public_customer_path(recipe.customer.id) do %>
                     <%= recipe.customer.name %>
                   <% end %>
-                <% end %>
             </th>
             <th><%= recipe.name %></th>
             <th><%= recipe.genre.category %></th>

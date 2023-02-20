@@ -1,9 +1,6 @@
 class Public::RecipeCommentsController < ApplicationController
-  def index
-  end
-
-  def update
-  end
+  before_action :authenticate_customer!
+  before_action :correct_comment,only: [:destroy]
 
   def destroy
     RecipeComment.find(params[:id]).destroy
@@ -18,11 +15,17 @@ class Public::RecipeCommentsController < ApplicationController
     redirect_to public_recipe_path(recipe)
   end
   
-  
   private
 
   def recipe_comment_params
-    params.require(:recipe_comment).permit(:comment,:recipe_id)
+    params.require(:recipe_comment).permit(:comment,:recipe_id,:customer_id)
+  end
+  
+  def correct_comment
+        @recipe = RecipeComment.find(params[:id])
+    unless @recipe.customer.id == current_customer.id
+      redirect_to public_recipes_path
+    end
   end
   
 end

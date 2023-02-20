@@ -53,7 +53,7 @@
       コメント件数：<%= @recipe.recipe_comments.count %>
     </div>
   </div>
-      
+
   <div class="row mt-3">
     <div class="col-lg-11">
       <table class="table table-light table-bordered mt-3">
@@ -82,14 +82,16 @@
       </table>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-lg-4">
+      <% if customer_signed_in? %>
       <%= form_with model: [@recipe, @recipe_comment], url:  public_recipe_recipe_comments_path(@recipe)   do |f| %>
         <%= f.text_area :comment, style: "width:100%", rows: '5', placeholder: "コメントをここに" %>
         <%= f.submit "送信する" %>
       <% end %>
+      <% end %>
     </div>
   </div>
-  
+
 </div>
