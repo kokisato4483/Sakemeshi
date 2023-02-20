@@ -1,0 +1,13 @@
+      <% if recipe.favorited_by?(current_customer) %>
+        <h4>
+          <%= link_to public_recipe_favorite_path(@recipe), method: :delete do %>
+            ♥<%= @recipe.favorites.count %> いいね
+          <% end %>
+        </h4>
+      <% else %>
+        <h4>
+          <%= link_to public_recipe_favorites_path(@recipe), method: :post do %>
+            ♡<%= @recipe.favorites.count %> いいね
+          <% end %>
+        </h4>
+      <% end %>

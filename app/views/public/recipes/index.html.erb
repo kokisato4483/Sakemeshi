@@ -29,6 +29,7 @@
           <th>レシピ名</th>
           <th>ジャンル</th>
           <th>コメント</th>
+          <th>いいね</th>
           <th></th>
         </tr>
       </thead>
@@ -44,6 +45,7 @@
             <th><%= recipe.name %></th>
             <th><%= recipe.genre.category %></th>
             <th><%= link_to "#{recipe.recipe_comments.count} コメント", public_recipe_path(recipe.id) %></th>
+            <th>♥<%= recipe.favorites.count %> いいね</th>
             <th>
               <button type="button" class="btn btn-outline-dark btn-sm">
                 <%= link_to "詳細", public_recipe_path(recipe.id), class: "nav-link" %>

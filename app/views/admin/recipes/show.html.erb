@@ -1,6 +1,15 @@
 <div class="container">
-  <h1><%= @recipe.name  %></h1>
 
+  <div class="row">
+
+    <div class="col-lg-4">
+      <h1><%= @recipe.name  %></h1>
+    </div>
+
+    <div class="col-lg-2">
+      <h4>♥<%= @recipe.favorites.count %> いいね</h4>
+    </div>
+  </div>
 
     <div class="row">
       <div class="col-lg-4">
@@ -55,6 +64,7 @@
             <th>ユーザー</th>
             <th>投稿日</th>
             <th>コメント</th>
+            <th>いいね</th>
             <th></th>
           </tr>
         </thead>

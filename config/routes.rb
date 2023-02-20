@@ -28,6 +28,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch 'customers/out' => 'customers#out'
     
     resources :recipes,only: [:index,:show,:create,:edit,:update,:destroy,:new] do
+      resources :favorites,only: [:create,:destroy]
       resources :recipe_comments,only: [:create,:destroy]
     end
     
