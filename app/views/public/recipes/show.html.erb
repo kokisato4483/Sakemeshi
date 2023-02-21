@@ -5,11 +5,18 @@
     <div class="col-lg-4">
       <h1><%= @recipe.name  %></h1>
     </div>
-
-    <div class="col-lg-2">
-      <%= render 'layouts/favorites', recipe: @recipe %>
-    </div>
+    <% if customer_signed_in? %>
+      <div class="col-lg-2">
+        <%= render 'layouts/favorites', recipe: @recipe %>
+      </div>
+    <% else %>
+      <div class="col-lg-2">
+        <h4>♥<%= @recipe.favorites.count %> いいね</h4>
+      </div>
+    <% end %>
+    
   </div>
+
 
     <div class="row">
       <div class="col-lg-4">
