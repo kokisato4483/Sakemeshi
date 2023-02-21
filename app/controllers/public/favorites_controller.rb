@@ -1,4 +1,6 @@
 class Public::FavoritesController < ApplicationController
+    before_action :authenticate_customer!
+
   
   def create
     recipe = Recipe.find(params[:recipe_id])

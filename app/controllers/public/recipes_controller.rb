@@ -1,4 +1,5 @@
 class Public::RecipesController < ApplicationController
+
   before_action :correct_post,only: [:edit,:update,:destroy]
 
   def index
