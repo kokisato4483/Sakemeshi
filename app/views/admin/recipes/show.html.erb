@@ -1,2 +1,87 @@
-<h1>Admin::Recipes#show</h1>
-<p>Find me in app/views/admin/recipes/show.html.erb</p>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-4">
+      <h1><%= @recipe.name  %></h1>
+    </div>
+
+    <div class="col-lg-2">
+      <h4>♥<%= @recipe.favorites.count %> いいね</h4>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h4>レシピ画像</h4>
+        <%= image_tag @recipe.get_image, size: "100x100" %>
+      </div>
+      <div class="col-lg-8">
+        <h4>カテゴリ</h4>
+        <%= @recipe.genre.category %>
+        <h4>概要</h4>
+        <%= @recipe.description %>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-lg-6">
+        <h4>材料</h4>
+        <%= @recipe.tips %>
+      </div>
+
+      <div class="form-group col-lg-6">
+        <h4>お酒</h4>
+         <%= @recipe.drink %>
+        <h4>お酒説明</h4>
+        <%= @recipe.drink_point %>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-12">
+        <h4>作り方</h4>
+        <%= @recipe.point %>
+      </div>
+    </div>
+
+  <div class="row mt-3">
+    <div class="col-lg-4">
+      <mark class="h4 table-secondary">コメント一覧</mark>
+    </div>
+    <div class="col-lg-4">
+      コメント件数：<%= @recipe.recipe_comments.count %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-lg-11">
+      <table class="table table-light table-bordered mt-3">
+        <thead class="thead-light">
+          <tr>
+            <th>ユーザー</th>
+            <th>投稿日</th>
+            <th>コメント</th>
+            <th>いいね</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recipe.recipe_comments.each do |recipe_comment| %>
+            <tr>
+              <th class="col-lg-3"><%= recipe_comment.customer.name %></th>
+              <th class="col-lg-2"><%= recipe_comment.created_at.strftime('%Y/%m/%d') %></th>
+              <th class="col-lg-6"><%= recipe_comment.comment %></th>
+              <th class="col-lg-1">
+                  <%= link_to "削除", admin_recipe_recipe_comment_path(recipe_comment.recipe, recipe_comment), method: :delete, class: "btn btn-danger" %>
+              </th>
+            <tr>
+          <% end %>
+       </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

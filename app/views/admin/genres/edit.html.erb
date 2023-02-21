@@ -12,4 +12,6 @@
       </tr>
     </table>
   <% end %>
+  <h5>ジャンルを削除した場合投稿されたレシピは削除されます</h5>
+  <%= link_to "削除する", admin_genre_path(@genre.id), method: :delete, class: "btn btn-danger" %>
 </div>

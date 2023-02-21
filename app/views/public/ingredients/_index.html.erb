@@ -1,0 +1,9 @@
+
+            <% @ingredients.each do |f| %>
+            <%= f.name %><%= f.count %>
+            <% end %>
+
+            <%= form_with model: @ingredient, url: public_ingredients_path, method: :post do |f| %>
+            <%= f.text_field :name %><%= f.text_field :count %>
+            <td><%= f.submit '新規投稿', class: "btn btn-success" %></td>
+             <% end %>

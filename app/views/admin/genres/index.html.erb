@@ -24,13 +24,16 @@
         <tr>
           <th>ジャンル</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @genres.each do |genre| %>
           <tr>
             <th><%= genre.category %></th>
-            <th><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></th>
+            <th>
+                <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
+            </th>
           </tr>
         <% end %>
       </tbody>
