@@ -30,7 +30,11 @@ class Public::CustomersController < ApplicationController
   def quit
   end
 
-
+  def favorites
+    @customer = Customer.find(params[:id])
+    favorites= Favorite.where(customer_id: @customer.id).pluck(:recipe_id)
+    @favorites = Recipe.find(favorites)
+  end
 
   private
 

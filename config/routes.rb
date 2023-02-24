@@ -28,9 +28,15 @@ Rails.application.routes.draw do
   namespace :public do
     get 'customers/infomation/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'
-    resources :customers,only:[:show]
+    resources :customers,only:[:show] do
+      member do
+        get :favorites
+      end
+    end
+      
     get 'customers/quit' => 'customers#quit'
     patch 'customers/out' => 'customers#out'
+    
     resources :recipes,only: [:index,:show,:create,:edit,:update,:destroy,:new] do
       resources :favorites,only: [:create,:destroy]
       resources :recipe_comments,only: [:create,:destroy]
