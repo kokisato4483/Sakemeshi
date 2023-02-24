@@ -7,7 +7,9 @@
     </div>
     <% if customer_signed_in? %>
       <div class="col-lg-2">
-        <%= render 'layouts/favorites', recipe: @recipe %>
+        <td id="favorite_buttons_<%= @recipe.id %>">
+          <%= render 'layouts/favorites', recipe: @recipe %>
+        <>
       </div>
     <% else %>
       <div class="col-lg-2">
