@@ -7,4 +7,19 @@ class Customer < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :recipe_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @customer = Customer.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @customer = Customer.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @customer = Customer.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @customer = Customer.where("name LIKE?","%#{word}%")
+    else
+      @customer = Customer.all
+    end
+  end
+  
 end

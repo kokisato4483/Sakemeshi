@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="row mt-4">
+    <mark class="h4 table-secondary">検索結果一覧</mark>
+  </div>
+  
+  <div class="row">
+
+    <table class="table table-hover table-inverse">
+      <% if @range == "ユーザー" %>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <th>
+                <%= link_to public_customer_path(customer.id) do %>
+                  <%= customer.name %>
+                <% end %>
+                </th>
+            </tr>
+          <% end %>
+        </tbody>
+      <% else %>
+        <tbody>
+          <% @recipes.each do |recipe| %>
+            <tr>
+              <th><%= image_tag recipe.get_image, size: "100x100" %></th>
+              <th>
+                <%= link_to public_customer_path(recipe.customer.id) do %>
+                  <%= recipe.customer.name %>
+                <% end %>
+              </th>
+              <th><%= recipe.name %></th>
+              <th><%= recipe.genre.category %></th>
+              <th><%= link_to "#{recipe.recipe_comments.count} コメント", public_recipe_path(recipe.id) %></th>
+              <th>♥<%= recipe.favorites.count %> いいね</th>
+              <th>
+                <button type="button" class="btn btn-outline-dark btn-sm">
+                  <%= link_to "詳細", public_recipe_path(recipe.id), class: "nav-link" %>
+                </button>
+              </th>
+            </tr>
+          <% end %>
+        </tbody>
+      <% end %>
+    </table>
+  
+  </div>
+  
+</div>

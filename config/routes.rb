@@ -2,16 +2,21 @@ Rails.application.routes.draw do
 
 # 顧客用
 # URL /customers/sign_in ...
-devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
 # 管理者用
 # URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+  root to: "homes#top"
+  get "/home/about" => "homes#about", as: "about"
+  get "search" => "searches#search"
+
   namespace :admin do
     resources :genres,only: [:index,:create,:edit,:update,:destroy]
     resources :customers,only: [:index,:show,:edit,:update]
@@ -23,7 +28,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :public do
     get 'customers/infomation/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'
-    resources :customers,only:[:show]
+    resources :customers,only:[:show] do
+      member do
+        get :favorites
+      end
+    end
+      
     get 'customers/quit' => 'customers#quit'
     patch 'customers/out' => 'customers#out'
     
@@ -31,11 +41,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       resources :favorites,only: [:create,:destroy]
       resources :recipe_comments,only: [:create,:destroy]
     end
-    
     resources :ingredients,only: [:create,:update,:destroy]
   end 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "homes#top"
-  get "/home/about" => "homes#about", as: "about"
 end
