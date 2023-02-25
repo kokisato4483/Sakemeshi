@@ -27,7 +27,7 @@
       </table>
     </div>
   </div>
-  
+
   <mark class="h4 table-secondary">投稿レシピ一覧</mark>
   <div class="row">
     <table class="table table-light table-bordered">
@@ -56,7 +56,7 @@
               <button type="button" class="btn btn-outline-dark btn-sm">
                 <%= link_to "詳細", public_recipe_path(recipe.id), class: "nav-link" %>
               </button>
-        <% if @customer.id==nil &&  customer_signed_in? %>
+        <% if recipe.customer == current_customer %>
                 <button type="button" class="btn btn-outline-dark btn-sm">
                   <%= link_to "編集", edit_public_recipe_path(recipe.id), class: "nav-link" %>
                 </button>
