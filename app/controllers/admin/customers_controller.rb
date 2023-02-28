@@ -7,7 +7,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @recipes = @customer.recipes
+    @recipes = @customer.recipes.page(params[:page]).per(10)
   end
 
   def edit
