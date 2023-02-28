@@ -34,8 +34,8 @@ Rails.application.routes.draw do
       end
     end
       
-    get 'customers/quit' => 'customers#quit'
-    patch 'customers/out' => 'customers#out'
+    get 'customers/infomation/quit' => 'customers#quit'
+    patch 'customers/infomation/out' => 'customers#out'
     
     resources :recipes,only: [:index,:show,:create,:edit,:update,:destroy,:new] do
       resources :favorites,only: [:create,:destroy]

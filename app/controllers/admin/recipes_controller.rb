@@ -1,13 +1,13 @@
 class Admin::RecipesController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
       @genres = Genre.all
     if params[:genre_id]
       @genre = @genres.find(params[:genre_id])
-      @recipes = @genre.recipes.order(created_at: :DESC)
+      @recipes = @genre.recipes.page(params[:page]).order(created_at: :DESC)
     else
-      @recipes = Recipe.all.order(created_at: :DESC)
+      @recipes = Recipe.page(params[:page]).order(created_at: :DESC)
     end
 
   end
@@ -21,11 +21,11 @@ class Admin::RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
-  
+
   private
-  
+
   def recipe_params
     params.require(:recipe).permit(:id,:genre_id,:customer_id,:name,:description,:tips,:point,:is_status,:drink,:drink_point,:image,:created_at)
   end
-  
+
 end

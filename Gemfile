@@ -57,7 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem 'kaminari','~> 1.2.1'
 gem 'mini_magick'
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
@@ -72,3 +71,6 @@ gem "net-pop"
 gem "net-imap"
 gem 'ransack'
 gem 'jquery-rails'
+
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'

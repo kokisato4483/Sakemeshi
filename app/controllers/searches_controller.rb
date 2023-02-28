@@ -4,11 +4,11 @@ class SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "レシピ名"
-      @recipes = Recipe.looks(params[:search], params[:word])
+      @recipes = Recipe.looks(params[:search], params[:word]).page(params[:page])
       render "/layouts/search_result"
 
     else
-      @customers = Customer.looks(params[:search], params[:word])
+      @customers = Customer.looks(params[:search], params[:word]).page(params[:page])
       render "/layouts/search_result"
 
     end
