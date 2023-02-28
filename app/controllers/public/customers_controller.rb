@@ -1,9 +1,9 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!,only: [:edit,:update,:out,:quit]
+ # before_action :authenticate_customer!,only: [:edit,:update,:out,:quit]
 
   def show
     @customer = Customer.find(params[:id])
-    @recipes = @customer.recipes
+    @recipes = @customer.recipes.page(params[:page]).per(10)
   end
 
   def edit
@@ -28,6 +28,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def quit
+    @customer = current_customer
   end
 
   def favorites

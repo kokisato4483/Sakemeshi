@@ -15,11 +15,11 @@
 
     <div class="row">
     <div class="col text-center mt-4">
-      <%= link_to public_customers_path, class: 'nav-link' do %>
+      <%= link_to public_customer_path(@customer), class: 'nav-link' do %>
         <button type="button" class="btn btn-primary">退会しない</button>
       <% end %>
     </div>
     <div class="col text-center mt-4">
-      <%= link_to "退会する", public_customers_out_path, method: :patch, class: "btn btn-danger" %>
+      <%= link_to "退会する", public_customers_infomation_out_path, method: :patch, class: "btn btn-danger" %>
     </div>
   </div>
