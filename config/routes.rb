@@ -13,10 +13,12 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+# ホーム・アバウトページ
   root to: "homes#top"
   get "/home/about" => "homes#about", as: "about"
   get "search" => "searches#search"
 
+# 管理者側ルーティング
   namespace :admin do
     resources :genres,only: [:index,:create,:edit,:update,:destroy]
     resources :customers,only: [:index,:show,:edit,:update]
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
+# 会員側ルーティング
   namespace :public do
     get 'customers/infomation/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'

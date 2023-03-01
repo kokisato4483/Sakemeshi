@@ -1,4 +1,5 @@
 <div class="offset-2">
+  
   <div class="row mt-4">
     <mark class="h4 table-secondary">マイページ</mark>
   </div>
@@ -31,6 +32,7 @@
   <mark class="h4 table-secondary">投稿レシピ一覧</mark>
   <div class="row">
     <table class="table table-light table-bordered">
+      
       <thead class="thead-light"></thead>
         <tr>
           <th></th>
@@ -41,6 +43,7 @@
           <th></th>
         </tr>
       </thead>
+      
       <tbody>
         <% @recipes.each do |recipe| %>
           <tr>
@@ -56,21 +59,25 @@
               <button type="button" class="btn btn-outline-dark btn-sm">
                 <%= link_to "詳細", public_recipe_path(recipe.id), class: "nav-link" %>
               </button>
-        <% if recipe.customer == current_customer %>
+  <%# 本人のみ %>
+              <% if recipe.customer == current_customer %>
                 <button type="button" class="btn btn-outline-dark btn-sm">
                   <%= link_to "編集", edit_public_recipe_path(recipe.id), class: "nav-link" %>
                 </button>
                 <button type="button" class="btn btn-outline-dark btn-sm">
                   <%= link_to "削除", public_recipe_path(recipe.id), method: :delete, class: "nav-link" %>
                 </button>
-         <% end %>
+               <% end %>
             </th>
           </tr>
         <% end %>
       </tbody>
+      
     </table>
   </div>
+  
   <%= paginate @recipes %>
+  
   <div class="row">
     <p><%=link_to"お気に入り記事一覧へ",favorites_public_customer_path(@customer), class: 'btn btn-primary ' %></p>
   </div>

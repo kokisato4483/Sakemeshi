@@ -9,9 +9,9 @@
     <%= form_with model: Genre.new, url: admin_genres_path, method: :post do |f| %>
       <table class="table table-borderless">
         <tr>
-            <td>ジャンル名</td>
-            <td><%= f.text_field :category %></td>
-            <td><%= f.submit '新規投稿', class: "btn btn-success" %></td>
+          <td>ジャンル名</td>
+          <td><%= f.text_field :category %></td>
+          <td><%= f.submit '新規投稿', class: "btn btn-success" %></td>
         </tr>
       </table>
     <% end %>
@@ -32,13 +32,14 @@
           <tr>
             <th><%= genre.category %></th>
             <th>
-                <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %>
             </th>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+  
 </div>
 
 <%= paginate @genres %>

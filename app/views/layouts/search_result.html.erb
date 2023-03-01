@@ -5,9 +5,9 @@
   </div>
   
   <div class="row">
-
     <table class="table table-hover table-inverse">
       <% if @range == "ユーザー" %>
+      
         <tbody>
           <% @customers.each do |customer| %>
             <tr>
@@ -19,7 +19,9 @@
             </tr>
           <% end %>
         </tbody>
+        
       <% else %>
+      
         <tbody>
           <% @recipes.each do |recipe| %>
             <tr>
@@ -41,11 +43,11 @@
             </tr>
           <% end %>
         </tbody>
+        
       <% end %>
     </table>
   
   </div>
-  
 </div>
 
-  <%= paginate @recipes %>
+<%= paginate @recipes %>

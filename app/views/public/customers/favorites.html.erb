@@ -6,6 +6,7 @@
   
   <div class="row">
     <table class="table table-light table-bordered">
+      
       <thead class="thead-light"></thead>
         <tr>
           <th></th>
@@ -16,6 +17,7 @@
           <th></th>
         </tr>
       </thead>
+      
       <tbody>
         <% @favorites.each do |recipe| %>
           <tr>
@@ -35,9 +37,9 @@
           </tr>
         <% end %>
       </tbody>
+      
     </table>
   </div>
-
 </div>
 
 <%= paginate @favorites %>

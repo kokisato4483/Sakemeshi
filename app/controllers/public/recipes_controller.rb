@@ -9,7 +9,6 @@ class Public::RecipesController < ApplicationController
     else
       @recipes = Recipe.page(params[:page]).per(10).order(created_at: :DESC)
     end
-
   end
 
   def new
@@ -45,7 +44,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def correct_post
-      @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     unless @recipe.customer.id == current_customer.id
       redirect_to public_recipes_path
     end
