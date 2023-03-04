@@ -1,5 +1,4 @@
 class Admin::GenresController < ApplicationController
-  #管理者ログインの権限
   before_action :authenticate_admin!
   
   def index
@@ -34,7 +33,7 @@ class Admin::GenresController < ApplicationController
   end
   
   private
-  #ストロングパラメータを設定することでデータを一時保持
+
   def genre_params
     params.require(:genre).permit(:category)
   end

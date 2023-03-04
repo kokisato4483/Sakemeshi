@@ -13,6 +13,7 @@ module Sakemeshi
     
     config.i18n.default_locale = :ja 
     config.time_zone = 'Asia/Tokyo'
+    config.paths.add 'lib', eager_load: true # 追加
     #:jaはjapaneseのja
     # Configuration for the application, engines, and railties goes here.
     #

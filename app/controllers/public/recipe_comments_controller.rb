@@ -22,7 +22,7 @@ class Public::RecipeCommentsController < ApplicationController
   end
   
   def correct_comment
-        @recipe = RecipeComment.find(params[:id])
+      @recipe = RecipeComment.find(params[:id])
     unless @recipe.customer.id == current_customer.id
       redirect_to public_recipes_path
     end

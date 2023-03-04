@@ -3,19 +3,21 @@ class Recipe < ApplicationRecord
   belongs_to :customer
   belongs_to :genre
   has_one_attached :image
+  has_many :tags, dependent: :destroy 
   
   has_many :recipe_comments, dependent: :destroy 
   has_many :favorites, dependent: :destroy
   
-
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
 
+#レシピ画像デフォルト
   def get_image
     (image.attached?) ? image : "no_image.jpg"
   end
   
+#完全一致・前方一致・後方一致・部分一致
   def self.looks(search, word)
     if search == "perfect_match"
       @recipe = Recipe.where("name LIKE?", "#{word}")

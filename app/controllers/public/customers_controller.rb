@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @recipes = @customer.recipes.page(params[:page]).per(10)
+    @recipes = @customer.recipes.page(params[:page]).per(10).order(created_at: :DESC)
   end
 
   def edit

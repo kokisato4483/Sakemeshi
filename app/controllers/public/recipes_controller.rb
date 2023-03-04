@@ -9,7 +9,6 @@ class Public::RecipesController < ApplicationController
     else
       @recipes = Recipe.page(params[:page]).per(10).order(created_at: :DESC)
     end
-
   end
 
   def new
@@ -18,8 +17,13 @@ class Public::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.score = Language.get_data(recipe_params[:name])  #この行を追加
     @recipe.customer_id = current_customer.id
     @recipe.save
+    tags = Vision.get_image_data(@recipe.image)
+    tags.each do |tag|
+      @recipe.tags.create(name: tag)
+    end
     redirect_to public_recipe_path(@recipe)
   end
 
@@ -45,7 +49,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def correct_post
-      @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     unless @recipe.customer.id == current_customer.id
       redirect_to public_recipes_path
     end
