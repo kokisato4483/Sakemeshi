@@ -1,13 +1,13 @@
       <% if recipe.favorited_by?(current_customer) %>
         <h4>
           <%= link_to public_recipe_favorite_path(recipe.id), method: :delete, remote: true do %>
-            ♥<%= recipe.favorites.count %> いいね
+            <button type="button" class="btn btn-primary">♥<%= recipe.favorites.count %> いいね</button>
           <% end %>
         </h4>
       <% else %>
         <h4>
           <%= link_to public_recipe_favorites_path(recipe.id), method: :post, remote: true do %>
-            ♡<%= recipe.favorites.count %> いいね
+            <button type="button" class="btn btn-primary">♡<%= recipe.favorites.count %> いいね</button>
           <% end %>
         </h4>
       <% end %>
