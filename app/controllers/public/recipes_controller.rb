@@ -24,7 +24,7 @@ class Public::RecipesController < ApplicationController
     tags.each do |tag|
       @recipe.tags.create(name: tag)
     end
-    redirect_to public_recipe_path(@recipe)
+      redirect_to public_recipe_path(@recipe)
   end
 
   def show
@@ -38,6 +38,7 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+    @recipe.score = Language.get_data(recipe_params[:name])  #この行を追加
     @recipe.update(recipe_params)
     redirect_to public_recipe_path(@recipe.id)
   end
