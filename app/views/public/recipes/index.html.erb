@@ -39,7 +39,7 @@
                   <% end %>
             </th>
             <th><%= recipe.name %></br>
-                <span class="sentiment-score">【感情分析スコア<%= recipe.score %>】</span>
+              <span class="label-score">レシピ名スコア：<%= recipe.score %></span>
             </th>
             <th><%= recipe.genre.category %></th>
             <th><%= link_to "#{recipe.recipe_comments.count} コメント", public_recipe_path(recipe.id) %></th>

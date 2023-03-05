@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="row">
+  <div class="row m-2">
 
     <div class="col-lg-4">
       <h1><%= @recipe.name  %></h1>
@@ -30,9 +30,9 @@
             <span class="label"><%= tag.name %></span>
           <% end %>
         </div>
-        
-        <p class="sentiment-score">感情分析スコア[<%= @recipe.score %>]</p>
-        
+        <div class="mt-1">
+        <span class="label-score">レシピ名スコア：<%= @recipe.score %></span>
+        </div>
       </div>
       <div class="col-lg-8">
         <h4>カテゴリ</h4>
