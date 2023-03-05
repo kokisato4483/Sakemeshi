@@ -2,21 +2,18 @@
 
   <div class="row m-2">
 
-    <div class="col-lg-4">
+    <div class="col-lg-8">
       <h1><%= @recipe.name  %></h1>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <% if customer_signed_in? %>
+          <td id="favorite_buttons_<%= @recipe.id %>" >
+            <%= render 'layouts/favorites', recipe: @recipe %>
+          </td>
+        <% else %>
+          <h4><%= @recipe.favorites.count %> いいね</h4>
+        <% end %>
+      </div>
     </div>
-    <% if customer_signed_in? %>
-      <div class="col-lg-2">
-        <td id="favorite_buttons_<%= @recipe.id %>" >
-          <%= render 'layouts/favorites', recipe: @recipe %>
-        </td>
-      </div>
-    <% else %>
-      <div class="col-lg-2">
-        <h4><%= @recipe.favorites.count %> いいね</h4>
-      </div>
-    <% end %>
-    
   </div>
 
 
