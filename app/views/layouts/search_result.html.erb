@@ -49,5 +49,8 @@
   
   </div>
 </div>
-
-<%= paginate @recipes %>
+<% if @range == "ユーザー" %>
+  <%= paginate @customers %>
+<% else %>
+  <%= paginate @recipes %>
+<% end %>
