@@ -4,17 +4,12 @@
 <div class="container">
 
 
-
-
-
   <div class="row">
     <div class=" sidebar col-lg-2">
       <h5>カテゴリ一覧</h5>
       <% @genres.each do |genre| %>
         <table class="table table-light table-bordered">
-
             <%= link_to( genre.category, public_recipes_path(genre_id: genre.id), class: "btn btn-light btn-outline-secondary btn-block" )%>
-
         </table>
       <% end %>
     </div>
