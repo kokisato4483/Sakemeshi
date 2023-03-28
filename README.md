@@ -24,6 +24,12 @@
 - 自分のレシピを他のユーザーと共有したい時
 
 ## 設計書
+テーブル定義書
+https://docs.google.com/spreadsheets/d/1Q7BAM4Qw6JDJ3ZMdbTitxVZTia51vyhpiZRAgh3TjpI/edit#gid=728719595
+詳細設計書
+https://docs.google.com/spreadsheets/d/18hvoyYz0g15yIshHC357-MhhaVtDemO7fowWWHUV6_Y/edit#gid=549108681
+ER図
+![ER図](https://user-images.githubusercontent.com/119371625/228270294-f78670b5-ac53-4484-9f49-71b6d626b23a.png)
 
 
 ## 開発環境
