@@ -1,3 +1,4 @@
+
 <div class="container">
 
   <div class="row m-2">
@@ -21,7 +22,7 @@
       <div class="col-lg-4">
         <h4>レシピ画像</h4>
         <%= image_tag @recipe.get_image, size: "300x300" %>
-        
+
         <div class="tag-box">
           <% @recipe.tags.each do |tag| %>
             <span class="label"><%= tag.name %></span>
