@@ -32,4 +32,15 @@ class Recipe < ApplicationRecord
     end
   end
 
+  #バリデーション
+  with_options presence: true do
+    validates :name
+    validates :description
+    validates :tips
+    validates :point
+    validates :drink
+    validates :drink_point
+  end
+  
+
 end
