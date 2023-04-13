@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create(email: "test@gmail.com", password: "123456")
 
-50.times do |n|
+10.times do |n|
     Customer.create(
         name: "#{n}",
         email: "#{n}@#{n}",
@@ -15,10 +15,10 @@ Admin.create(email: "test@gmail.com", password: "123456")
     )
 end
 
-30.times do |n|
-    Recipe.create!(
-        customer_id: 2,
-        genre_id: 4,
+10.times do |n|
+    Recipe.find_or_create_by(
+        customer_id: "#{n}",
+        genre_id: "#{n}",
         name: "#{n}",
         description: "#{n}",
         tips: "#{n}",
