@@ -1,5 +1,15 @@
 <div class="container">
   <h1>投稿フォーム</h1>
+  
+  <% if @recipe.errors.any? %>
+    <%= @recipe.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
   <%= form_with model: @recipe, url: public_recipes_path, method: :post do |f| %>
 
     <div class="row">
