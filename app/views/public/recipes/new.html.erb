@@ -1,6 +1,8 @@
+
 <div class="container">
   <h1>投稿フォーム</h1>
-  
+
+<%#= render 'layouts/recipe_error', recipe: @recip %>
   <% if @recipe.errors.any? %>
     <%= @recipe.errors.count %>件のエラーが発生しました
     <ul>
@@ -10,6 +12,7 @@
     </ul>
   <% end %>
   
+
   <%= form_with model: @recipe, url: public_recipes_path, method: :post do |f| %>
 
     <div class="row">
