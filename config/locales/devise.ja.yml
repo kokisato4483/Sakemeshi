@@ -1,6 +1,13 @@
 ja:
   activerecord:
     attributes:
+      recipe:
+        name: レシピ名
+        description: 概要
+        tips: 材料
+        point: 作り方
+        drink: お酒
+        drink_point: お酒説明
       user:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン

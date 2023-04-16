@@ -11,8 +11,14 @@ class Public::RecipeCommentsController < ApplicationController
     recipe = Recipe.find(params[:recipe_id])
     comment = current_customer.recipe_comments.new(recipe_comment_params)
     comment.recipe_id = recipe.id
-    comment.save
-    redirect_to public_recipe_path(recipe)
+    if comment.save
+       redirect_to public_recipe_path(recipe)
+    else 
+      @error_comment = comment
+      @recipe = Recipe.find(params[:recipe_id])
+      @recipe_comment = RecipeComment.new
+      render "public/recipes/show"
+    end
   end
   
   private
