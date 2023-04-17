@@ -75,3 +75,4 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 
+gem 'bootstrap-sass', '3.3.6'
