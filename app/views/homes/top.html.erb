@@ -11,3 +11,49 @@
     
   </div>
 </div>
+
+<h3 class="main mt-4 mb-4">新着レシピ</h3>
+
+<div class="container">
+    
+    <div class="col-lg-10">
+    <table class="table table-light table-bordered">
+      <thead class="thead-light"></thead>
+        <tr>
+          <th></th>
+          <th>投稿者</th>
+          <th>レシピ名</th>
+          <th>ジャンル</th>
+          <th>コメント</th>
+          <th>いいね</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @recipes.each do |recipe| %>
+          <tr>
+            <th><%= image_tag recipe.get_image, size: "100x100" %></th>
+            <th>
+                  <%= link_to public_customer_path(recipe.customer.id) do %>
+                    <%= recipe.customer.name %>
+                  <% end %>
+            </th>
+            <th><%= recipe.name %></br>
+              <span class="label-score">レシピ名スコア：<%= recipe.score %></span>
+            </th>
+            <th><%= recipe.genre.category %></th>
+            <th><%= link_to "#{recipe.recipe_comments.count} コメント", public_recipe_path(recipe.id) %></th>
+            <th>♥<%= recipe.favorites.count %> いいね</th>
+            <th>
+              <button type="button" class="btn btn-outline-dark btn-sm">
+                <%= link_to "詳細", public_recipe_path(recipe.id), class: "nav-link" %>
+              </button>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+     </div>
+  </div>
+  
+</div>
