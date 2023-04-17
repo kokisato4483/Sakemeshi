@@ -21,6 +21,9 @@
       <table class="table table-bordered table-condensed" >
         <tbody>
           <tr>
+            <%= image_tag @customer.get_profile_image, size: "150x150" %>
+          </tr>
+          <tr>
             <td class="info table-secondary ">ニックネーム</td>
             <td class="text-left"><%= @customer.name %></td>
           </tr>

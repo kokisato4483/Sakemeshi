@@ -1,7 +1,9 @@
 ja:
   activerecord:
     attributes:
-     recipe:
+      recipe_comment:
+        comment: コメント
+      recipe:
         name: レシピ名
         description: 概要
         tips: 材料
