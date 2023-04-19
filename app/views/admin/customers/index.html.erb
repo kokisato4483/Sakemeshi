@@ -8,6 +8,7 @@
     
     <thead>
       <tr>
+        <th class="table-secondary">プロフィール画像</th>
         <th class="table-secondary">会員ID</th>
         <th class="table-secondary">氏名</th>
         <th class="table-secondary">メールアドレス</th>
@@ -18,6 +19,7 @@
     <tbody>
       <% @customers.each do |t| %>
         <tr>
+          <td><%= image_tag t.get_profile_image, size: "100x100" %></td>
           <td><%= t.id %></td>
           <td>
             <%= link_to admin_customer_path(t.id) do %>
