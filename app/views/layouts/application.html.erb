@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <div  class="text-light" style="background-color:#8B0000;"><%= flash[:notice] %></div>
     <% if admin_signed_in? %>
       <%= render 'layouts/admin_header' %>
     <% else %>
