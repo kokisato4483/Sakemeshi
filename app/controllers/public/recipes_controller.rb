@@ -54,6 +54,10 @@ class Public::RecipesController < ApplicationController
       redirect_to public_recipes_path
     end
   end
+  
+  def ranking
+    @all_ranks = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(10).pluck(:recipe_id))
+  end
 
   private
 
