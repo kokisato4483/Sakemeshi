@@ -1,6 +1,18 @@
 
 <h3 class="main mt-4 mb-4">総合お気に入りランキング</h3>
 
+<div class="container">
+
+  <div class="row">
+    <div class=" sidebar col-lg-2">
+      <h5>ランキングカテゴリ</h5>
+        <table class="table table-light table-bordered">
+            <th><%= link_to "デイリー",  public_customers_recipes_ranking_path(recipe.id), class: "nav-link" %></th>
+            <th><%= link_to "ウイークリー",  public_customers_recipes_ranking_path(recipe.id), class: "nav-link" %></th></th>
+            <th><%= link_to "マンスリー",  public_customers_recipes_ranking_path(recipe.id), class: "nav-link" %></th></th>
+        </table>
+    </div>
+
 <div class="col-lg-10">
     <table class="table table-light table-bordered">
       <thead class="thead-light"></thead>

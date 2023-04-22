@@ -57,6 +57,9 @@ class Public::RecipesController < ApplicationController
   
   def ranking
     @all_ranks = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(10).pluck(:recipe_id))
+    @month_ranks = Recipe.find(Favorite.group(:recipe_id).where(created_at: Time.current.all_month).order('count(recipe_id) desc').limit(10).pluck(:recipe_id))
+    @week_ranks = Recipe.find(Favorite.group(:recipe_id).where(created_at: Time.current.all_week).order('count(recipe_id) desc').limit(10).pluck(:recipe_id))
+    @today_ranks = Recipe.find(Favorite.group(:recipe_id).where(created_at: Time.current.all_day).order('count(recipe_id) desc').limit(10).pluck(:recipe_id))
   end
 
   private
