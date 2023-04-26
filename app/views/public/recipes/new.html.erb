@@ -11,7 +11,6 @@
       <% end %>
     </ul>
   <% end %>
-  
 
   <%= form_with model: @recipe, url: public_recipes_path, method: :post do |f| %>
 
@@ -53,6 +52,8 @@
         <%=f.text_area :point, class: "form-control", style: "width:100%", rows: "5"  %>
       </div>
     </div>
+
+    <%= render 'layouts/new_tag', all_ranks: @recipe %>
 
     <div class= "row">
       <div class="form-group col-lg-12">
