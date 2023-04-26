@@ -32,6 +32,9 @@
               <button type="button" class="btn btn-outline-dark btn-sm">
                 <%= link_to "詳細", public_recipe_path(recipe.id), class: "nav-link" %>
               </button>
+            <button type="button" class="btn btn-outline-dark btn-sm">
+              <%= link_to "削除", admin_recipe_path(recipe.id), method: :delete, class: "nav-link" %>
+            </button>
             </th>
           </tr>
         <% end %>
