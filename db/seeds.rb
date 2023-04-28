@@ -26,4 +26,16 @@ end
         drink: "#{n}",
         drink_point: "#{n}",
     )
+
 end
+
+Recipeag.create([
+  { name: 'タグ1' },
+  { name: 'タグ2' },
+  { name: 'タグ3' },
+  { name: 'タグ4' },
+  { name: 'タグ5' }
+])
+
+end
+
