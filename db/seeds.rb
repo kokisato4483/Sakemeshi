@@ -28,7 +28,7 @@ end
     )
 end
 
-Tag.create([
+Recipeag.create([
   { name: 'タグ1' },
   { name: 'タグ2' },
   { name: 'タグ3' },
