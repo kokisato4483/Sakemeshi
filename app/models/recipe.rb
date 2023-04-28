@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :tags, dependent: :destroy 
   has_many :recipe_tag_relations, dependent: :destroy
   #has_many :recipetags, through: :recipe_tag_relations, dependent: :destroy
+
   
   has_many :recipe_comments, dependent: :destroy 
   has_many :favorites, dependent: :destroy
