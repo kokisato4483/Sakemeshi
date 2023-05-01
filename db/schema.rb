@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_24_141534) do
+ActiveRecord::Schema.define(version: 2023_04_27_110659) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(version: 2023_04_24_141534) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "recipe_tag_relations", force: :cascade do |t|
+    t.integer "recipe_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_recipe_tag_relations_on_recipe_id"
+    t.index ["tag_id"], name: "index_recipe_tag_relations_on_tag_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.integer "genre_id", null: false
@@ -129,6 +138,12 @@ ActiveRecord::Schema.define(version: 2023_04_24_141534) do
     t.decimal "score", precision: 5, scale: 3
   end
 
+  create_table "recipetags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.integer "recipe_id"
@@ -138,4 +153,6 @@ ActiveRecord::Schema.define(version: 2023_04_24_141534) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "recipe_tag_relations", "recipes"
+  add_foreign_key "recipe_tag_relations", "tags"
 end
