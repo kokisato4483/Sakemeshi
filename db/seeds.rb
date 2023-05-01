@@ -29,7 +29,7 @@ end
 
 end
 
-Recipeag.create([
+Recipetag.create([
   { name: 'タグ1' },
   { name: 'タグ2' },
   { name: 'タグ3' },
@@ -37,5 +37,5 @@ Recipeag.create([
   { name: 'タグ5' }
 ])
 
-end
+
 
