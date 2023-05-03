@@ -65,7 +65,7 @@ class Public::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:id,:genre_id,:customer_id,:name,:description,:tips,:point,:is_status,:drink,:drink_point,:image)
+    params.require(:recipe).permit(:id,:genre_id,:customer_id,:name,:description,:tips,:point,:is_status,:drink,:drink_point,:image, :tag_ids[])
   end
 
 end
