@@ -17,6 +17,10 @@
     </div>
   </div>
 
+<% @recipe.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+<% end %>
+
 
     <div class="row">
       <div class="col-lg-4">
