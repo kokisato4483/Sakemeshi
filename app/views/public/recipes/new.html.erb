@@ -53,12 +53,13 @@
       </div>
     </div>
 
-    <%= render 'layouts/new_tag', all_ranks: @recipe %>
-
     <div class= "row">
       <div class="form-group col-lg-12">
       <%= f.submit '投稿', class: "btn btn-outline-dark btn-sm　" %>
       </div>
     </div>
   <% end %>
+  
+  <%= render 'layouts/new_tag', all_ranks: @recipe %>
+  
 </div>
