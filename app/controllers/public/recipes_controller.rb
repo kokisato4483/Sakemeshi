@@ -9,6 +9,17 @@ class Public::RecipesController < ApplicationController
     else
       @recipes = Recipe.page(params[:page]).per(10).order(created_at: :DESC)
     end
+    
+    
+        #以下を追記
+    if params[:tag_ids]
+      @tweets = []
+      params[:tag_ids].each do |key, value|      
+        @recipes += Tag.find_by(name: key).tweets if value == "1"
+      end
+      @recipes.uniq!
+    end
+    
   end
 
   def new
