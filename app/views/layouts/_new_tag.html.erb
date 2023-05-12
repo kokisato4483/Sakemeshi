@@ -13,3 +13,10 @@
 
     <%= f.submit '送信' %>
 <% end %>
+
+<!-- テスト以下を追記 -->
+<%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+    <%= text_field_tag :tag %>
+    <%= submit_tag 'タグを追加' %>
+<% end %>
+<!-- ここまで -->
